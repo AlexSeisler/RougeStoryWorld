@@ -1,6 +1,6 @@
 # RougeStoryWorld - Author Landing Page 📚✨
 
-[![Live Demo on Netlify](https://img.shields.io/badge/Live-Demo-green?logo=netlify)](https://rougestoryworld.netlify.app)
+[![Live Demo on Netlify](https://img.shields.io/badge/Live-Demo-green?logo=netlify)](https://rougestorybookworld.netlify.app/)
 
 RougeStoryWorld is a **professional landing page** built for an **independent audiobook creator**.
 It serves as a **marketing/eCommerce front-end**, directing users to Amazon for purchases while showcasing books, author bio, video content, and testimonials.
@@ -9,7 +9,7 @@ It serves as a **marketing/eCommerce front-end**, directing users to Amazon for 
 
 ## 🌐 Live Demo
 
-* **Production URL:** [https://rougestoryworld.netlify.app](https://rougestoryworld.netlify.app)
+* **Production URL:** [https://rougestorybookworld.netlify.app/](https://rougestoryworld.netlify.app)
 * **Amazon Storefront:** [Author’s Amazon Page](https://www.amazon.com/stores/author/B0DLLB4GB3/allbooks)
 * **Repo Owner:** [Alex Seisler](https://github.com/AlexSeisler)
 
