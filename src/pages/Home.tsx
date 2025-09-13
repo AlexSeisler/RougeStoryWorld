@@ -1,3 +1,10 @@
+/**
+ * Home.tsx
+ * ------------------
+ * Landing page composition.
+ * Assembles hero, featured books, testimonials, video, about, email signup, and footer.
+ */
+
 import React from 'react';
 import { HeroSection } from '../components/HeroSection';
 import { FeaturedBooks } from '../components/FeaturedBooks';

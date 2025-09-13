@@ -1,3 +1,10 @@
+/**
+ * EmailCollection.tsx
+ * ------------------
+ * Popup modal for email signups.
+ * Simulates a subscription flow with success/failure UI.
+ */
+
 import React, { useState, useEffect } from 'react';
 import { Mail, Gift, X } from 'lucide-react';
 
@@ -59,10 +66,7 @@ export function EmailCollection() {
 
       setSuccess(true);
       setIsSubmitted(true);
-
-      setTimeout(() => {
-        setIsVisible(false);
-      }, 2000);
+      setTimeout(() => setIsVisible(false), 2000);
     } catch {
       setError('Failed to subscribe. Please try again.');
     } finally {
@@ -75,6 +79,7 @@ export function EmailCollection() {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-fade-in">
       <div className="relative w-full max-w-md bg-gradient-to-br from-amber-50 to-purple-50 rounded-2xl shadow-2xl p-8">
+        {/* Close Button */}
         <button
           onClick={() => {
             setIsVisible(false);
@@ -88,6 +93,7 @@ export function EmailCollection() {
           <X className="w-6 h-6" />
         </button>
 
+        {/* Content */}
         <div className="text-center">
           <div className="mb-6">
             <Mail className="w-12 h-12 mx-auto text-purple-600 mb-4" />
@@ -106,6 +112,7 @@ export function EmailCollection() {
             )}
           </div>
 
+          {/* Signup Form */}
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <input

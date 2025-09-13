@@ -1,3 +1,10 @@
+/**
+ * Collection.tsx
+ * ------------------
+ * Collection page.
+ * Displays the full set of featured books.
+ */
+
 import React from 'react';
 import { FeaturedBooks } from '../components/FeaturedBooks';
 

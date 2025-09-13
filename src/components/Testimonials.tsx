@@ -1,3 +1,10 @@
+/**
+ * Testimonials.tsx
+ * ------------------
+ * Customer testimonial section with star ratings, verified purchase badges,
+ * and CTA linking to Amazon store.
+ */
+
 import React from 'react';
 import { Star, ArrowRight } from 'lucide-react';
 
@@ -5,21 +12,21 @@ const testimonials = [
   {
     rating: 5,
     text: "Absolutely magical! My kids can't stop asking for more bedtime stories from Rouge's collection.",
-    author: "Sarah M.",
-    location: "Texas"
+    author: 'Sarah M.',
+    location: 'Texas',
   },
   {
     rating: 5,
-    text: "The illustrations are breathtaking, and the stories capture the heart. A must-have for young readers!",
-    author: "Jonathan P.",
-    location: "California"
+    text: 'The illustrations are breathtaking, and the stories capture the heart. A must-have for young readers!',
+    author: 'Jonathan P.',
+    location: 'California',
   },
   {
     rating: 5,
-    text: "A perfect mix of adventure and life lessons. I even enjoy reading them myself!",
-    author: "Emily R.",
-    location: "New York"
-  }
+    text: 'A perfect mix of adventure and life lessons. I even enjoy reading them myself!',
+    author: 'Emily R.',
+    location: 'New York',
+  },
 ];
 
 export function Testimonials() {
@@ -43,26 +50,18 @@ export function Testimonials() {
               >
                 {/* Rating */}
                 <div className="flex items-center mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="w-5 h-5 text-amber-400"
-                      fill="currentColor"
-                    />
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 text-amber-400" fill="currentColor" />
                   ))}
                 </div>
 
                 {/* Verified Badge */}
-                <div className="mb-4">
-                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                    Amazon Verified Purchase
-                  </span>
-                </div>
+                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 mb-4">
+                  Amazon Verified Purchase
+                </span>
 
-                {/* Review Text */}
+                {/* Review */}
                 <p className="text-gray-700 mb-4 italic">"{testimonial.text}"</p>
-
-                {/* Author */}
                 <p className="text-gray-600 text-sm">
                   — {testimonial.author}, {testimonial.location}
                 </p>
