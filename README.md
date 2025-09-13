@@ -9,8 +9,7 @@ It serves as a **marketing/eCommerce front-end**, directing users to Amazon for 
 ---
 
 ## 🌐 Live Demo
-- **Production URL:** [https://rougestorybookworld.netlify.app](https://rougestorybookworld.netlify.app)  
-Production URL: https://rougestorybookworld.netlify.app
+- **Production URL:** [https://rougestorybookworld.netlify.app](https://rougestorybookworld.netlify.app) 
 - **Amazon Storefront:** [Author’s Amazon Page](https://www.amazon.com/stores/author/B0DLLB4GB3/allbooks)
 - **Repo Owner:** [Alex Seisler](https://github.com/AlexSeisler)
 
