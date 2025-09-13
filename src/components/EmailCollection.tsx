@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Mail, Gift, X } from 'lucide-react';
-import { supabase } from '../lib/supabase';
 
 const POPUP_DELAY = 30000; // 30 seconds
 const FINAL_POPUP_DELAY = 60000; // 1 minute
@@ -17,22 +16,25 @@ export function EmailCollection() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+      const scrollPercent =
+        (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
       const now = Date.now();
-      
-      // Show popup based on conditions
-      if (scrollPercent > 50 && !isSubmitted && (now - lastClosed > POPUP_DELAY) && popupCount < 2) {
-        setPopupCount(prev => prev + 1);
+
+      if (scrollPercent > 50 && !isSubmitted && now - lastClosed > POPUP_DELAY && popupCount < 2) {
+        setPopupCount((prev) => prev + 1);
         setIsVisible(true);
-      } else if (scrollPercent > 50 && !isSubmitted && (now - lastClosed > FINAL_POPUP_DELAY) && popupCount === 2) {
-        setPopupCount(prev => prev + 1);
+      } else if (
+        scrollPercent > 50 &&
+        !isSubmitted &&
+        now - lastClosed > FINAL_POPUP_DELAY &&
+        popupCount === 2
+      ) {
+        setPopupCount((prev) => prev + 1);
         setIsVisible(true);
       }
     };
 
     const timer = setTimeout(() => {
-      const now = Date.now();
-      // Initial popup after 30 seconds if not shown yet
       if (!isSubmitted && popupCount === 0) {
         setPopupCount(1);
         setIsVisible(true);
@@ -52,23 +54,17 @@ export function EmailCollection() {
     setError(null);
 
     try {
-      const { error: supabaseError } = await supabase
-        .from('subscribers')
-        .insert([{ email, source: 'popup' }]);
-
-      if (supabaseError) throw supabaseError;
+      // Fake async delay to mimic API call
+      await new Promise((resolve) => setTimeout(resolve, 1000));
 
       setSuccess(true);
       setIsSubmitted(true);
+
       setTimeout(() => {
         setIsVisible(false);
       }, 2000);
-    } catch (err) {
-      if (err instanceof Error) {
-        setError(err.message.includes('unique constraint') 
-          ? 'This email is already subscribed!' 
-          : 'Failed to subscribe. Please try again.');
-      }
+    } catch {
+      setError('Failed to subscribe. Please try again.');
     } finally {
       setIsLoading(false);
     }
@@ -83,9 +79,8 @@ export function EmailCollection() {
           onClick={() => {
             setIsVisible(false);
             setLastClosed(Date.now());
-            // Don't increment popup count when closing the final popup
             if (popupCount < 3) {
-              setPopupCount(prev => Math.min(prev + 1, 3));
+              setPopupCount((prev) => Math.min(prev + 1, 3));
             }
           }}
           className="absolute right-4 top-4 text-gray-500 hover:text-gray-700 transition-colors"
@@ -93,7 +88,6 @@ export function EmailCollection() {
           <X className="w-6 h-6" />
         </button>
 
-        {/* Content */}
         <div className="text-center">
           <div className="mb-6">
             <Mail className="w-12 h-12 mx-auto text-purple-600 mb-4" />
@@ -101,13 +95,14 @@ export function EmailCollection() {
               Get Exclusive Stories & Special Perks!
             </h2>
             <p className="text-gray-600">
-              Sign up now to receive free story downloads, first access to new book releases, and VIP discounts—before anyone else!
+              Sign up now to receive free story downloads, first access to new book releases,
+              and VIP discounts—before anyone else!
             </p>
-            {error && (
-              <p className="text-red-500 text-sm mt-2">{error}</p>
-            )}
+            {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
             {success && (
-              <p className="text-green-500 text-sm mt-2">✨ Welcome to the Storybook Club! Check your email soon for your free story.</p>
+              <p className="text-green-500 text-sm mt-2">
+                ✨ Welcome to the Storybook Club! Check your email soon for your free story.
+              </p>
             )}
           </div>
 
@@ -128,7 +123,7 @@ export function EmailCollection() {
               type="submit"
               disabled={isLoading || success}
               className={`w-full bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-500 text-white px-6 py-3 rounded-lg shadow-md transition-all duration-300 hover:shadow-lg flex items-center justify-center space-x-2 ${
-                (isLoading || success) ? 'opacity-50 cursor-not-allowed' : ''
+                isLoading || success ? 'opacity-50 cursor-not-allowed' : ''
               }`}
             >
               <span>
